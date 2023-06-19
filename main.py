@@ -6,8 +6,7 @@ import pandas as pd
 from openai.embeddings_utils import get_embedding,cosine_similarity
 
 from flask import Flask, request,make_response,jsonify
-from chatbot import makeRequest
-app = Flask(__name__)
+# from chatbot import makeRequest
 
 api_key ="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"
 openai.api_key = api_key
@@ -252,6 +251,8 @@ def makeRequest(input_string):
     messages=message_objects
     )
     return completion.choices[0].message['content']
+
+app = Flask(__name__)
 
 @app.route('/api/v1/chatgpt', methods=['POST'])
 def create_todo():
